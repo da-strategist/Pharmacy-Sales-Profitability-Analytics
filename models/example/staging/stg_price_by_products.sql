@@ -6,7 +6,7 @@ with price_by_brand AS
                 brand as brand_name,
                 listpriceeur as price,
                 launchdate as launch_date
-        from {{ref('dim_product')}}
+        from {{source('pharm-raw-sources', 'dimproduct')}}
 
 ),
 

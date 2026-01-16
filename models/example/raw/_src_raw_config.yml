@@ -1,0 +1,17 @@
+sources:
+  - name: pharm-raw-sources
+    description: This is used to connect to datasets stored in our raw storage layer
+    database: pharm_dwh
+    schema: pharm_raw
+    tables:
+      - name: dimproduct
+        description: This table houses information concerning pharmaceutical products
+      - name: dimpharmacy
+        description: This table houses information concerning all pharmacies and their locatons
+      - name: dimdate
+        description: This table houses breakdown of dates for effective drilldown
+      - name: dimfactsales
+        description: This table houses transaction data
+
+
+
