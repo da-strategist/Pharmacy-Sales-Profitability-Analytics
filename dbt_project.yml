@@ -44,6 +44,5 @@ models:
 seeds:
   jan_proj_01:
     +schema: pharm_dwh_raw
-    +materialized: seed
     +file_format: csv
     +delimiter: ';'

@@ -1,0 +1,11 @@
+sources:
+  - name: pharm_tbl
+    description: This source config is used to connect to tables in our raw schema
+    database: pharm_dwh
+    schema: Pharm_dwh_raw
+    table:
+      - name: dimproduct
+        description: This is used to connect to our dim product table in our data warehouse
+      - name: dimpharmacy
+      - name: factsales
+      - name: dimdate
