@@ -1,0 +1,9 @@
+models:
+  - name: stg_price_by_products
+    description: This is used to aggregate product count and price across product names
+    columns:
+      - name: brand_name
+        description: This is a foreign key that serves as a unique identifier for each customer
+        data_tests:
+          - unique
+          - not_null
