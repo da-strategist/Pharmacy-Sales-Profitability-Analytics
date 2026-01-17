@@ -54,8 +54,28 @@ sources:
                   max_value: 12000
       - name: dimdate
         description: This table houses breakdown of dates for effective drilldown
-      - name: dimfactsales
+      - name: factsales
         description: This table houses transaction data
+        columns:
+          - name: salesid
+            description: This is the primary key and unique identifier of each sales transaction
+            data_tests:
+              - not_null
+              - unique
+          - name: productid
+            description: This is the foreign key used to reference products in the dimproduct table
+            data_tests:
+              - not_null
+          - name: pharmacyid
+            description: This is the foreign key used to reference pharmacy in the dimproduct table
+            data_tests:
+              - not_null
+          - name: datekey
+            description: This is the foreign key used to reference products in the dimdate table
+            data_tests:
+              - not_null
+
+
 
 
 
