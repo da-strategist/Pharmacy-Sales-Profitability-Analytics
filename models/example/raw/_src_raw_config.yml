@@ -42,16 +42,16 @@ sources:
             description: Base cost (before country effects)
             data_tests:
               - not_null
-              - accepted_range: 
-                  arguments:
-                    values: (200, 12000)
+              - dbt_utils.accepted_range: 
+                  min_value: 100
+                  max_value: 9000
           - name: listpriceeur
             description: Base list price (before country effects)
             data_tests:
               - not_null
-              - accepted_range: 
-                  arguments:
-                    values: (200, 12000)
+              - dbt_utils.accepted_range: 
+                  min_value: 200
+                  max_value: 12000
       - name: dimdate
         description: This table houses breakdown of dates for effective drilldown
       - name: dimfactsales
