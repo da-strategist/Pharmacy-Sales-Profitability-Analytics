@@ -26,12 +26,44 @@ Tasks:
 
 Below are the steps taken to complete this task
 
-Load source data into raw schema using dbt seed
-Test sources for accuracy and data validity
-Next Transform data where necessary and load into staging layer
-Test staging models for accuracy and validity
-Develop models to answer key business questions and load int the data mart
-Connect to data mart from Power BI to create visualization and reporting
+Load source data into raw schema using dbt seeds
+
+Apply source tests to validate raw data contracts
+
+Transform and standardize data into staging models
+
+Apply staging tests to validate transformations and business logic
+
+Build analytics models (facts & dimensions) in the data mart
+
+Apply mart-level tests aligned to business questions
+
+Expose the data mart to Power BI for reporting and insights
+
+
+
+
+Tests:
+
+RAW (Sources / Seeds)
+
+Here we try test for the accuracy, completeness and validity of our data
+
+These are data contracts.
+
+✔ Tests that belong here
+Test Type	                Purpose
+not_null	            Required fields must exist
+unique	                Primary / natural keys
+accepted_values	        Static categories & codes
+relationships	        Referential integrity
+accepted_range	        Years, numeric bounds
+
+
+Staging (Transformation models)
+
+
+Data mart (Business case logic models)
 
 
 ### Resources:

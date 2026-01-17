@@ -4,11 +4,29 @@ sources:
     database: pharm_dwh
     schema: pharm_raw
     tables:
-      - name: dimproduct
+      - name: dimpharmacy
         description: This table houses information concerning pharmaceutical products
         columns:
-          - name: 
-      - name: dimpharmacy
+          - name: productid
+            description: This is the primary key that uniquely identifies each pharmacy
+            data_test:
+              - not_null
+              - unique
+          - name: pharmacyname
+            description: This is the name of pharmacy
+            data_tests:
+              - not_null
+          - name: country
+            description: This is the name of country the pharmacy is located in
+            data_tests:
+              - not_null
+            accepted_values: ["Germany", "France", "Italy", "Belgium", "Poland", "Spain"]
+          - name: region
+            description: This is the region where the pharmacy is located
+            data_tests:
+              - not_null
+
+      - name: dimproduct
         description: This table houses information concerning all pharmacies and their locatons
       - name: dimdate
         description: This table houses breakdown of dates for effective drilldown
