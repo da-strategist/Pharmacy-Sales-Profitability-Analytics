@@ -6,6 +6,8 @@ sources:
     tables:
       - name: dimproduct
         description: This table houses information concerning pharmaceutical products
+        columns:
+          - name: 
       - name: dimpharmacy
         description: This table houses information concerning all pharmacies and their locatons
       - name: dimdate
