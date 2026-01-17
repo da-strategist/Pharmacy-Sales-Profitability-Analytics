@@ -1,0 +1,81 @@
+sources:
+  - name: pharm-raw-sources
+    description: This is used to connect to datasets stored in our raw storage layer
+    database: pharm_dwh
+    schema: pharm_raw
+    tables:
+      - name: dimpharmacy
+        description: This table houses information concerning pharmaceutical products
+        columns:
+          - name: pharmid
+            description: This is the primary key that uniquely identifies each pharmacy
+            data_test:
+              - not_null
+              - unique
+          - name: pharmacyname
+            description: This is the name of pharmacy
+            data_tests:
+              - not_null
+          - name: country
+            description: This is the name of country the pharmacy is located in
+            data_tests:
+              - not_null
+              - accepted_values: 
+                  values: ['Germany', 'France', 'Italy', 'Belgium', 'Poland', 'Spain', 'Austria', 'Netherlands']
+          - name: region
+            description: This is the region where the pharmacy is located
+            data_tests:
+              - not_null
+      - name: dimproduct
+        description: This table houses information concerning all pharmacies and their locatons
+        columns:
+          - name: productid
+            description: This is the primary key that identifies each product
+            data_tests:
+              - not_null
+              - unique
+          - name: productname
+            description: this is the name of each product
+            data_tests:
+              - not_null
+          - name: standardcosteur
+            description: Base cost (before country effects)
+            data_tests:
+              - not_null
+              - dbt_utils.accepted_range: 
+                  min_value: 100
+                  max_value: 9000
+          - name: listpriceeur
+            description: Base list price (before country effects)
+            data_tests:
+              - not_null
+              - dbt_utils.accepted_range: 
+                  min_value: 200
+                  max_value: 12000
+      - name: dimdate
+        description: This table houses breakdown of dates for effective drilldown
+      - name: factsales
+        description: This table houses transaction data
+        columns:
+          - name: salesid
+            description: This is the primary key and unique identifier of each sales transaction
+            data_tests:
+              - not_null
+              - unique
+          - name: productid
+            description: This is the foreign key used to reference products in the dimproduct table
+            data_tests:
+              - not_null
+          - name: pharmacyid
+            description: This is the foreign key used to reference pharmacy in the dimproduct table
+            data_tests:
+              - not_null
+          - name: datekey
+            description: This is the foreign key used to reference products in the dimdate table
+            data_tests:
+              - not_null
+
+
+
+
+

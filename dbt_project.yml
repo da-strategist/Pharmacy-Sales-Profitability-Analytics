@@ -34,16 +34,16 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
       staging:
-        +schema: pharm_dwh_staging
+        +schema: staging
         +materialized: view
       mart:
-        +schema: pharm_dwh_mart
+        +schema: mart
         +materialized: view
       +materialized: view
 
 seeds:
   jan_proj_01:
-    +schema: pharm_dwh_raw
+    +schema: raw
     +materialized: seed
     +file_format: csv
     +delimiter: ';'
