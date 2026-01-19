@@ -7,3 +7,12 @@ models:
         data_tests:
           - unique
           - not_null
+  - name: stg_dimdate
+    description: This holds staging data for date 
+  - name: stg_dimproduct
+    description: This holds tranformed product data
+  - name: stg_stores
+    description: this contains transformed for stores, their location etc
+  - name: stg_factsales
+    description: This holds transformed transaction data from the fact sales table
+
