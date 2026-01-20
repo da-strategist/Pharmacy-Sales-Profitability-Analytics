@@ -5,5 +5,6 @@
             datekey as date_id,
             revenueeur as tot_rev,
             costeur as tot_cost,
-            margineur as tot_margin
+            margineur as tot_margin,
+            promoflag
         FROM {{source ('pharm-raw-sources', 'factsales')}}
