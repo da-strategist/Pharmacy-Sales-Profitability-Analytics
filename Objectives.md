@@ -26,7 +26,7 @@ Objectives
 
     Compare:
 
-        Urban vs suburban vs rural performance
+        Urban vs suburban vs rural performanceeee
 
         New vs mature stores (using OpenDate)
 
