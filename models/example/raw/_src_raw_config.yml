@@ -9,9 +9,11 @@ sources:
         columns:
           - name: pharmid
             description: This is the primary key that uniquely identifies each pharmacy
-            data_test:
-              - not_null
-              - unique
+            config:
+              meta:
+                data_test:
+                  - not_null
+                  - unique
           - name: pharmacyname
             description: This is the name of pharmacy
             data_tests:
@@ -20,8 +22,9 @@ sources:
             description: This is the name of country the pharmacy is located in
             data_tests:
               - not_null
-              - accepted_values: 
-                  values: ['Germany', 'France', 'Italy', 'Belgium', 'Poland', 'Spain', 'Austria', 'Netherlands']
+              - accepted_values:
+                  arguments:
+                    values: ['Germany', 'France', 'Italy', 'Belgium', 'Poland', 'Spain', 'Austria', 'Netherlands']
           - name: region
             description: This is the region where the pharmacy is located
             data_tests:
@@ -42,16 +45,18 @@ sources:
             description: Base cost (before country effects)
             data_tests:
               - not_null
-              - dbt_utils.accepted_range: 
-                  min_value: 100
-                  max_value: 9000
+              - dbt_utils.accepted_range:
+                  arguments:
+                    min_value: 100
+                    max_value: 9000
           - name: listpriceeur
             description: Base list price (before country effects)
             data_tests:
               - not_null
-              - dbt_utils.accepted_range: 
-                  min_value: 200
-                  max_value: 12000
+              - dbt_utils.accepted_range:
+                  arguments:
+                    min_value: 200
+                    max_value: 12000
       - name: dimdate
         description: This table houses breakdown of dates for effective drilldown
       - name: factsales
@@ -74,7 +79,6 @@ sources:
             description: This is the foreign key used to reference products in the dimdate table
             data_tests:
               - not_null
-
 
 
 
