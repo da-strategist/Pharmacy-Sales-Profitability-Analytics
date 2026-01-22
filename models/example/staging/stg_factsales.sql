@@ -3,6 +3,7 @@
             productid as product_id,
             pharmacyid as store_id,
             datekey as date_id,
+            unitssold as unit_sold,
             revenueeur as tot_rev,
             costeur as tot_cost,
             margineur as tot_margin,

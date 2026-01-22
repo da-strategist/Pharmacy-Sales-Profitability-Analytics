@@ -13,8 +13,8 @@ Objectives
     Identify:
 
         Low-margin products that sell a lot (silent profit killers)
-
         High-margin, low-volume products (growth opportunities)
+        Store performance across regions
 
 2. Store & Regional Performance
 
@@ -26,7 +26,7 @@ Objectives
 
     Compare:
 
-        Urban vs suburban vs rural performanceeee
+        Urban vs suburban vs rural performance
 
         New vs mature stores (using OpenDate)
 
