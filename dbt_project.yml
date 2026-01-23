@@ -38,7 +38,7 @@ models:
       mart:
         +schema: mart
         +materialized: view
-      intermmidiate:
+      intermidiate:
         +schema: int_layer
         +materialized: view
       +materialized: view
