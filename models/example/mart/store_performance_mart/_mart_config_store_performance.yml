@@ -1,0 +1,48 @@
+models: 
+  - name: _m_store_perf_fact
+    description: This store performance mart model is created to help managers compare monthly store performance across regions in order to identify and replicate best-performing stores.
+    columns:
+      - name: store_id
+        description: This is a primary key that uniquely identifies individual stores
+        data_tests:
+          - not_null
+      - name: store_name
+        description: This is the name of each store
+        data_tests:
+          - not_null
+      - name: txn_year
+        description: This is the transaction year in review
+        data_tests:
+          - not_null
+      - name: txn_month
+        description: This is the transaction month in review
+        data_tests:
+          - not_null
+      - name: total_revenue
+        description: This is an aggregation of all revenue
+        data_tests:
+          - not_null
+      - name: units_sold
+        description: This is the total number of products sold by each store during the period in review
+        data_tests:
+          - not_null
+      - name: total_cost
+        description: This is an aggregation of total cost
+        data_tests:
+          - not_null
+      - name: total_margin
+        description: This is the name of each store
+        data_tests:
+          - not_null
+      - name: margin_percent
+        description: This is the name of each store
+        data_tests:
+          - not_null
+          - accepted_values:
+             arguments:
+                values: < 100.0
+  - name: _m_dim_store
+    description: This dimension model is created to help managers compare monthly store performance across various dimensions and draw insights that answers business questions.
+  - name: _m_dimdate
+    description: This is contains the breakdown of dates to aid drilling down to the lowest level of granularity.
+    
