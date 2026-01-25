@@ -5,6 +5,7 @@ WITH dimdate_ext as (
 
         datekey,
         date as txn_date,
+        date_trunc('month',date) as start_of_txn_month,
         Year as txn_year,
         monthnumber as month_num,
         monthname as txn_month
@@ -14,10 +15,15 @@ FROM {{ref('stg_dimdate')}}
 ), datedim as (
 
     SELECT 
-        date_trunc('month',txn_date) as start_of_txn_month,
+        to_varchar(start_of_txn_month, 'yyyy-mm') as month_key,
+        start_of_txn_month,
         txn_year,
         month_num,
         txn_month
     FROM dimdate_ext
-)
-    SELECT * FROM datedim
+), ddim as (
+    SELECT distinct * FROM datedim
+    order by 1 asc
+
+)   select * from ddim
+

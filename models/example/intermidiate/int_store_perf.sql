@@ -24,6 +24,7 @@ with store_ext as
             datekey,
             date as txn_date, 
             monthname as txn_month,
+            to_varchar(date, 'yyyy-mm') as monthkey,
             year as txn_year
         FROM {{ref('stg_dimdate')}}
 
@@ -32,7 +33,7 @@ with store_ext as
         SELECT 
             se.store_id,
             s.store_name,
-            td.txn_year,
+            td.monthkey,
             td.txn_month,
             sum(se.total_revenue) as total_revenue,
             count(se.txn_id) as units_sold,
@@ -41,7 +42,7 @@ with store_ext as
         FROM store_ext se 
         LEFT JOIN store s ON se.store_id = s.store_id
         LEFT JOIN txn_date td ON se.date_id = td.datekey
-        GROUP BY se.store_id, s.store_name, td.txn_year, td.txn_month 
+        GROUP BY se.store_id, s.store_name, td.monthkey, td.txn_month 
 
 )
         SELECT * FROM store_perf
