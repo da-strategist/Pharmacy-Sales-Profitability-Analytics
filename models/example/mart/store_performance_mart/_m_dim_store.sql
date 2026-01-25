@@ -1,5 +1,5 @@
 
-SELECT  DISTINCT
+SELECT  
         store_id,
         store_name,
         country,
