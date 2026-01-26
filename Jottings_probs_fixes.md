@@ -3,7 +3,7 @@ Corrections:
 
 Date related 
 
-To enable effective utilization of the tim intelligence feature in power bi, I had to create a monthkey in my dimdate mart. The reason being that, the first trial which included all columns from the dimdate model led to us having a many to many relationship between the m_store_fact model and m_dimdate model. this also resulted in wrong aggregation of values. 
+To enable effective utilization of the time intelligence feature in power bi, I had to create a monthkey in my dimdate mart. The reason being that, the first trial which included all columns from the dimdate model led to us having a many to many relationship between the m_store_fact model and m_dimdate model. this also resulted in wrong aggregation of values. 
 
 The first step to resolving this was to recreate the model to have the final columns below: 
         date_trunc('month',date) as start_of_txn_month,

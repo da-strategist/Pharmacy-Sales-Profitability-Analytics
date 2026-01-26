@@ -4,7 +4,6 @@ with store_perf_mart_ext as (
 
         SELECT 
             store_id,
-            store_name,
             monthkey,
             txn_month,
             total_revenue,

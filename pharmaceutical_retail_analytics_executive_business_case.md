@@ -21,7 +21,12 @@ Revenue performance varies significantly across pharmacies, but revenue alone do
 * Capital and operational attention may be misallocated
 
 ---
-
+## Monthly store performance
+Objectives:
+Identify overall monthly transaction volume
+Top performing stores
+Top performing regions
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Problem 2: Product Portfolio Margin Leakage
 
 A SKU (Stock Keeping Unit) refers to a single, unique sellable product variant. In this analysis, each `ProductID` represents one SKU (for example: a specific brand, dosage, and pack size of a medicine).
@@ -33,7 +38,20 @@ Business Risk:
 * Inefficient use of shelf space
 * Poor pricing and assortment decisions
 
----
+Tasks
+Identify
+
+Top products by revenue and margin
+→ avoids the classic “high revenue, low profitability” trap
+
+Promo impact
+→ critical for decision-making (discount ≠ success)
+
+Regional performance
+→ supports localized assortment and pricing strategies
+
+Market basket analysis
+
 
 ### Problem 3: Promotion Effectiveness Uncertainty
 
