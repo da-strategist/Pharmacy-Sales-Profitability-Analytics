@@ -6,12 +6,8 @@ models:
         description: This is a primary key that uniquely identifies individual stores
         data_tests:
           - not_null
-      - name: store_name
-        description: This is the name of each store
-        data_tests:
-          - not_null
-      - name: txn_year
-        description: This is the transaction year in review
+      - name: monthkey
+        description: This is a unique key used to identify each transaction month in a given year
         data_tests:
           - not_null
       - name: txn_month
