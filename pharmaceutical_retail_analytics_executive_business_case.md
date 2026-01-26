@@ -53,9 +53,6 @@ Regional performance
 Market basket analysis
 
 
-product_perf_mart desc: This model is created to help managers and analysts understand which products drive revenue and profitability, why they perform differently across regions, and whether promotions meaningfully impact performance.
----
-
 ### Problem 3: Promotion Effectiveness Uncertainty
 
 Promotions are widely used to drive sales volume, but their true impact on profitability is unclear.
