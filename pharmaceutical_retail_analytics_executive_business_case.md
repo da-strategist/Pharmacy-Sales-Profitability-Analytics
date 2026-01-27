@@ -10,7 +10,7 @@ This business case defines the problems to be solved, objectives, and metrics/KP
 
 ## 2. Problem Statements
 
-### Problem 1: Uneven Store Profitability
+### Problem 1: Store Performance and Profitability
 
 Revenue performance varies significantly across pharmacies, but revenue alone does not explain true performance. Some stores generate strong sales but weak margins, while others quietly outperform.
 
@@ -27,7 +27,7 @@ Identify overall monthly transaction volume
 Top performing stores
 Top performing regions
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-### Problem 2: Product Portfolio Margin Leakage
+### Problem 2: Product Performance
 
 A SKU (Stock Keeping Unit) refers to a single, unique sellable product variant. In this analysis, each `ProductID` represents one SKU (for example: a specific brand, dosage, and pack size of a medicine).
 The product assortment contains high-volume SKUs that may be eroding profitability due to low margins, pricing pressure, or heavy promotion usage.
@@ -53,7 +53,7 @@ Regional performance
 
 
 
-### Problem 3: Promotion Effectiveness Uncertainty
+### Problem 3: Promotion Effectiveness 
 
 Promotions are widely used to drive sales volume, but their true impact on profitability is unclear.
 
@@ -63,6 +63,7 @@ Business Risk:
 * Inconsistent promotional strategy across regions
 * Lack of evidence-based promo governance
 
+mart desc: This model exists to help decision-makers understand whether promotions drive incremental volume and revenue, and whether the margin trade-off is justified.
 ---
 
 ## 3. Business Objectives
