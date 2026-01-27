@@ -50,7 +50,7 @@ Promo impact
 Regional performance
 → supports localized assortment and pricing strategies
 
-Market basket analysis
+
 
 
 ### Problem 3: Promotion Effectiveness Uncertainty
