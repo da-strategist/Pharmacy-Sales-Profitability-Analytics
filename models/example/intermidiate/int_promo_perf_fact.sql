@@ -39,6 +39,7 @@ WITH promo_ext as (
             count(pe.txn_id) as txn_count,
             sum(pe.unit_sold) as units_sold,
             sum(pe.total_rev) as total_revenue,
+            sum(total_cost) as total_cost,
             sum(pe.total_margin) as total_margin,
             pe.promoflag as promoflag
         FROM promo_ext pe

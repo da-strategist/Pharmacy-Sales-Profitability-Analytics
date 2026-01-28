@@ -6,8 +6,9 @@ with store_perf_mart_ext as (
             store_id,
             monthkey,
             txn_month,
-            total_revenue,
+            txn_count,
             units_sold,
+            total_revenue,
             total_cost,
             total_margin,
             round((total_margin/total_revenue)*100, 2) as margin_percent
