@@ -36,7 +36,8 @@ product as (
                 pf.product_id as product_id,
                 de.monthkey,
                 de.txn_month as txn_month,
-                count(pf.txn_id) as units_sold,
+                count(pf.txn_id) as txn_count,
+                sum(unit_sold) as units_sold,
                 sum(pf.total_rev) as total_rev,
                 sum(pf.total_cost) as total_cost,
                 pf.promoflag as promoflag
