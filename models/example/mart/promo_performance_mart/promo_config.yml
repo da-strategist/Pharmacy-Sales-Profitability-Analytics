@@ -28,5 +28,17 @@ models:
         description: this is the total cost on products sold without promo
       - name: promo_margin
         description: this is the total profit margin generated from products sold on promo
+        data_tests:
+          - promo_margin_test:
+              arguments:
+                promo_revenue: promo_revenue
+                promo_cost: promo_cost
+                promo_margin: promo_margin
       - name: non_promo_margin
         description: this is the total profit margin generated from products sold without promo
+        data_tests:
+          - non_promo_margin_test:
+              arguments:
+                non_promo_revenue: non_promo_revenue
+                non_promo_cost: non_promo_cost
+                non_promo_margin: non_promo_margin
