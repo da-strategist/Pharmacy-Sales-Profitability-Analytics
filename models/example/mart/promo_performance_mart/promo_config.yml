@@ -1,0 +1,6 @@
+models:
+  - name: m_promo_performance
+    description: This model was created to enable operations and sales team view monthly promo performance and their impact on revenue and profit margins
+    columns:
+      - name: monthkey
+        description: this is the primary key and unique identifier for each transaction
