@@ -1,0 +1,32 @@
+models:
+  - name: m_promo_performance
+    description: This model was created to enable operations and sales team view monthly promo performance and their impact on revenue and profit margins
+    columns:
+      - name: monthkey
+        description: this is the primary key and unique identifier for each transaction
+        data_tests:
+          - not_null
+      - name: store_id
+        description: This is the unique identifier for each store
+        data_tests:
+          - not_null
+      - name: promo_transacts
+        description: this is a counts of promo related transactions
+      - name: non_promo_transacts
+        description: this is a counts of non promo transactions
+      - name: promo_units_sold
+        description: this is the total number of products sold on promo
+      - name: non_promo_units_sold
+        description: this is the total number of products sold without promo
+      - name: promo_revenue
+        description: this is the total revenue generated from products sold on promo
+      - name: non_promo_revenue
+        description: this is the total revenue generated from products sold without promo
+      - name: promo_cost
+        description: this is the total cost on products sold on promo
+      - name: non_promo_cost
+        description: this is the total cost on products sold without promo
+      - name: promo_margin
+        description: this is the total profit margin generated from products sold on promo
+      - name: non_promo_margin
+        description: this is the total profit margin generated from products sold without promo

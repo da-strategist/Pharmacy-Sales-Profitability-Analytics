@@ -6,6 +6,7 @@ with store_ext as
             date_id,
             total_rev as total_revenue,
             txn_id,
+            unit_sold,
             total_cost as total_cost,
             total_margin as total_margin
         FROM {{ref ('stg_factsales')}}
@@ -35,8 +36,9 @@ with store_ext as
             s.store_name,
             td.monthkey,
             td.txn_month,
+            count(se.txn_id) as txn_count,
+            sum(unit_sold) as units_sold,
             sum(se.total_revenue) as total_revenue,
-            count(se.txn_id) as units_sold,
             sum(se.total_cost) as total_cost,
             sum(se.total_margin) as total_margin
         FROM store_ext se 

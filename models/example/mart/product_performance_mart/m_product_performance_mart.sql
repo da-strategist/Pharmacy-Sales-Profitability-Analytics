@@ -4,6 +4,7 @@ WITH prod_mart as (
         SELECT 
             product_id,
             monthkey,
+            txn_count,
             units_sold,
             total_rev as total_revenue,
             total_cost,
