@@ -52,7 +52,6 @@ Regional performance
 
 
 
-
 ### Problem 3: Promotion Effectiveness 
 
 Promotions are widely used to drive sales volume, but their true impact on profitability is unclear.
@@ -65,6 +64,8 @@ Business Risk:
 
 mart desc: This model exists to help decision-makers understand whether promotions drive incremental volume and revenue, and whether the margin trade-off is justified.
 ---
+
+### Problem 3: Pricing effectiveness Effectiveness 
 
 ## 3. Business Objectives
 
@@ -152,14 +153,7 @@ This model was created to uncover insights on the monthly realized pricing perfo
 
 ---
 
-## 5. Success Criteria
 
-This initiative is successful if leadership can:
-
-* Clearly rank stores by **true profitability**
-* Identify products to **keep, fix, or reconsider**
-* Make promotion decisions based on **measured ROI**
-* Confidently defend decisions in executive and board discussions
 
 ---
 
@@ -306,3 +300,5 @@ Value-creating promos
 Volume-only promos
 
 Loss-making promos
+
+
