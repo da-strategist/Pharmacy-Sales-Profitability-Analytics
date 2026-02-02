@@ -1,0 +1,28 @@
+models: 
+  - name: pricing_performance_mart
+    description: This model was created to uncover insights on the monthly realized pricing performance of individual products within a specific region, based on actual sales transactions.
+    columns:
+      - name: product_id
+        description: This is the primary key and unique identifier for every product
+        data_tests:
+          - not_null
+      - name: monthkey
+        description: This is a foreign key that connects to the dimdate table via the datekey primary key. this is uses a combination of year-month to identify/group transaction at year-month level
+        data_tests:
+          - not_null
+      - name: store_id
+        description: This is a foreign key identifier for store where products were sold, this helps connect to other attributes in the dimstore model for effective dirlling
+        data_tests:
+          - not_null
+      - name: total_revenue
+        description: This is an aggregation of the total revenue generated at product level
+        data_tests:
+          - not_null
+      - name: total_cost
+        description: this is an aggregation of the total cost at product level
+        data_tests:
+          - not_null
+      - name: units_sold
+        description: This is an aggregation of the total number sold at product level
+        data_tests:
+          - not_null

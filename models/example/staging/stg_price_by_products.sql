@@ -4,7 +4,20 @@ with price_by_brand AS
         select productid as product_id,
                 category as product_cat,
                 brand as brand_name,
-                listpriceeur as price,
+                to_decimal(
+                replace(
+                        regexp_replace(listpriceeur, '[^0-9,.-]', ''),
+                        ',',
+                        '.'
+                        ), 12, 2
+                    ) as list_price,
+                to_decimal(
+                        replace(
+                        regexp_replace(standardcosteur, '[^0-9,.-]', ''),
+                        ',',
+                        '.'
+                        ), 12, 2
+                    ) as std_cost,
                 launchdate as launch_date
         from {{source('pharm-raw-sources', 'dimproduct')}}
 
@@ -15,8 +28,8 @@ product_details AS
         select brand_name,
                 product_cat,
                 count(product_id) as tot_products,
-                sum(price) as price_by_brand,
-                avg(price) as avg_price_by_brand
+                sum(list_price) as price_by_brand,
+                avg(list_price) as avg_price_by_brand
         from price_by_brand
         group by 1, 2
 

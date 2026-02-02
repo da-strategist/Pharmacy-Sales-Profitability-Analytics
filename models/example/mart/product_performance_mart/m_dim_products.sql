@@ -6,6 +6,6 @@ SELECT
         brand,
         isgeneric,
         list_price,
-        std_price,
+        std_cost,
         launch_date
 FROM {{ref('stg_dimproduct')}}
