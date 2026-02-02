@@ -58,3 +58,14 @@ WITH product_mba_ext as (
 )
 
 SELECT * FROM product_mba_ext
+
+
+Placing singular tests in the wrong dircetory leading to the error below: 
+ error: dbt1501: Failed to render SQL unknown function: Jinja macro or function test_non_promo_margin_test is unknown
+(in target/generic_tests/non_promo_margin_test_m_promo__157cd973a911fea1b9a5f06b753ef982.sql:1:1)
+  --> target/generic_tests/non_promo_margin_test_m_promo__157cd973a911fea1b9a5f06b753ef982.sql:1:1
+error: dbt1501: Failed to render SQL unknown function: Jinja macro or function test_promo_margin_test is unknown
+(in target/generic_tests/promo_margin_test_m_promo_perf_31dd3967c83292813d115fe6effdccd6.sql:1:1)
+  --> target/generic_tests/promo_margin_test_m_promo_perf_31dd3967c83292813d115fe6effdccd6.sql:1:1
+
+Fix: Move both singular tests from the test/generic test directory to macros directory. That way dbt is able to location and reference them for use
