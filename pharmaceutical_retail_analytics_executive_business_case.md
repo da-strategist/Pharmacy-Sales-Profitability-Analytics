@@ -81,6 +81,8 @@ mart desc: This model exists to help decision-makers understand whether promotio
 * Rationalize promotions based on ROI
 
 ---
+Pricing effectiveness and performance mart
+This model was created to uncover insights on the monthly realized pricing performance of individual products within a specific region, based on actual sales transactions.
 
 ## 4. Key Metrics & KPIs
 
