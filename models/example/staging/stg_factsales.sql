@@ -15,8 +15,20 @@ with stg_fact as (
                     12,
                     2
                 ) as total_rev,
-                    round(costeur/100.0, 2) as total_cost,
-                    round(margineur/100.0, 2) as total_margin,
+                    to_decimal(
+                        replace(
+                        regexp_replace(costeur, '[^0-9,.-]', ''),
+                        ',',
+                        '.'
+                        ), 12, 2
+                    ) as total_cost,
+                    to_decimal(
+                        replace(
+                        regexp_replace(margineur, '[^0-9,.-]', ''),
+                        ',',
+                        '.'
+                        ), 12, 2
+                    ) as total_margin,
                     promoflag
                 FROM {{source ('pharm-raw-sources', 'factsales')}}
 ), stg_factsalees as

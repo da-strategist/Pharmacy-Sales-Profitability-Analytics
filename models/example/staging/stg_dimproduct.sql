@@ -9,7 +9,7 @@ with raw_prods as
             isgeneric,
             packsize as size,
             listpriceeur as list_price,
-            standardcosteur as std_price,
+            standardcosteur as std_cost,
             launchdate as launch_date
             
     FROM {{source('pharm-raw-sources', 'dimproduct')}}
@@ -22,8 +22,20 @@ with raw_prods as
             brand,
             isgeneric,
             size,
-            list_price,
-            std_price,
+            to_decimal(
+                        replace(
+                        regexp_replace(list_price, '[^0-9,.-]', ''),
+                        ',',
+                        '.'
+                        ), 12, 2
+                    ) as list_price,
+            to_decimal(
+                        replace(
+                        regexp_replace(std_cost, '[^0-9,.-]', ''),
+                        ',',
+                        '.'
+                        ), 12, 2
+                    ) as std_cost,
             launch_date
     FROM raw_prods
 )
