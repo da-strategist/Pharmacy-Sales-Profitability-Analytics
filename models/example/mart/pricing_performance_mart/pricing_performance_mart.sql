@@ -6,7 +6,7 @@ WITH pricing_ext as (
                 product_id,
                 monthkey,
                 store_id,
-                units_sold
+                units_sold,
                 total_revenue,
                 total_cost
         FROM {{ref('int_promo_perf_fact')}}
@@ -22,4 +22,4 @@ WITH pricing_ext as (
         FROM pricing_ext
         GROUP BY product_id, monthkey, store_id
 )
-        SELECT * FROM pricing
+    SELECT * FROM pricing
