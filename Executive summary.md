@@ -3,7 +3,7 @@
 ## Executive Summary
 
 Retail Pharmacy Analytics using dbt
-1. Business Context
+# Business Context
 The organization operates a multi-region retail pharmacy network with a diverse store footprint (urban, suburban, rural) and a broad pharmaceutical product portfolio spanning OTC, generic, and branded medicines. While transactional sales data exists across stores, products, and time, decision-makers currently lack clear, trusted, and decision-ready insights into what truly drives profitability.
 Most reporting today is revenue-centric and monolithic in nature, making it difficult to answer critical questions such as:
 * Which stores genuinely create value versus simply generate volume?
@@ -11,7 +11,8 @@ Most reporting today is revenue-centric and monolithic in nature, making it diff
 * Do promotions and pricing decisions improve profitability or merely shift volume?
 This project addresses these gaps by transforming raw sales data into well-defined, analytics-ready data marts, using dbt to enable transparent, scalable, and business-aligned decision-making.
 
-2. Core Business Problems Addressed
+# Core Business Problems Addressed
+
 Problem 1: Store Performance & Profitability Blind Spots
 Revenue performance varies significantly across pharmacies, but revenue alone does not reflect true performance. Stores with similar size, location, and product mix often deliver very different profit outcomes.
 Business Risk
@@ -53,7 +54,7 @@ Objective
 * Track realized pricing performance at product and regional level
 * Measure discount depth, margin erosion, and pricing discipline over time
 
-3. Business Objectives
+# Business Objectives
 Strategic Objectives
 * Shift decision-making from revenue-focused to profit-focused
 * Enable consistent, evidence-based decisions at executive and regional levels
@@ -64,7 +65,7 @@ Operational Objectives
 * Rationalize promotions based on measurable ROI
 * Improve pricing discipline and margin sustainability
 
-4. Key Metrics & KPIs
+# Key Metrics & KPIs
 Financial Performance (Foundation)
 * Total Revenue (€)
 * Total Cost (€)

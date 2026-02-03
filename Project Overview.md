@@ -71,6 +71,7 @@ Version Control & Transparency
 Changes to business logic were tracked, reviewable, and auditable — a critical requirement in regulated industries such as pharmaceuticals.
 
 Deliverables and Business Value
+
 Key Deliverables
 
 Store Performance Mart
