@@ -1,71 +1,144 @@
 
 
-Pharmacy Sales & Profitability Analytics 
+## Pricing, Store & Product Performance Analytics Using dbt
 
-The goal of this task is to build analytic models that will be utilized BI teams of various business units to uncover insights relevenat to their daily operations. The dataset utilized in this project was generated from an European pharmacy chain distributor operating across multiple European countries. It includes daily sales transactions by pharmacy and product, with supporting dimensions for time, geography, and product hierarchy.
+# Introduction
 
+This project demonstrates the practical application of dbt (data build tool) to design, transform, and model analytics-ready data for a multi-store pharmaceutical retail organization. The objective was to move from raw transactional data to decision-ready analytics marts that support store performance evaluation, product profitability analysis, promotional effectiveness, and pricing strategy diagnostics.
 
-Deliverables from this task are analytical models built of the historical data to enable Data analysts and visualization experts build reports that helps stakeholders understand KPIs and factors driving them:
+dbt was selected as the core transformation layer due to its strengths in:
 
-The delivered models are as follows:
+analytics engineering best practices,
 
-## Pricing performance mart model
-## Product Performance mart model
-## promo performance mart model
-## store performance mart model
+modular SQL-based transformations,
 
-Each of the above a key business questions 
+built-in testing and documentation,
 
+and strong support for dimensional modeling.
 
-Tasks:
+By leveraging dbt, the project emphasizes clarity, scalability, and trust in data, ensuring that business stakeholders can rely on analytics outputs with confidence.
 
-Below are the steps taken to complete this task
+Project Overview and Approach
 
-Load source data into raw schema using dbt seeds
+What Was Done
 
-Apply source tests to validate raw data contracts
+The project followed a structured analytics engineering workflow:
 
-Transform and standardize data into staging models
+Staging Layer
 
-Apply staging tests to validate transformations and business logic
+Raw sales, product, store, and date data were cleaned and standardized.
 
-Build analytics models (facts & dimensions) in the data mart
+No aggregations were performed at this stage to preserve data granularity.
 
-Apply mart-level tests aligned to business questions
+Intermediate Models
 
-Expose the data mart to Power BI for reporting and insights
+Business logic was introduced incrementally.
 
+Reusable transformations were created to avoid duplication and ensure consistency.
 
+Analytics Marts
 
+Purpose-built fact and dimension models were designed using dimensional modeling principles.
 
-Tests:
+Separate marts were created to answer distinct business questions:
 
-RAW (Sources / Seeds)
+Store performance
 
-Here we try test for the accuracy, completeness and validity of our data
+Product performance and profitability
 
-These are data contracts.
+Promotional effectiveness
 
-✔ Tests that belong here
-Test Type	                            Purpose
-not_null	                        Required fields must exist
-unique	                             Primary / natural keys
-Singular tests                       Static categories
-Generic tests (using macros)        
-relationships	                     Referential integrity
+Pricing strategy diagnostics
 
+Each mart was designed with a clearly defined grain, aligned KPIs, and appropriate dimensions to prevent ambiguity and double-counting in downstream reporting tools such as Power BI.
 
+The Role of dbt in the Project
 
-Staging: This layer holds clean/ transformed data (Transformation models)
+dbt was instrumental in translating business questions into reliable data models.
 
-Intermidiate: This layer holds data with aggregations based on business logic
+Key Contributions of dbt
 
-Data mart: This layer holds the final data that is exposed to BI tools for visualization and reporting
+Modularity & Reusability
+dbt allowed transformations to be broken into logical layers (staging → intermediate → mart), making the project easier to understand, maintain, and extend.
 
+Data Quality & Trust
+Built-in testing (e.g., not-null checks, relationship validation, business rule tests) ensured that analytical outputs were reliable and defensible.
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+Documentation as a First-Class Citizen
+Model and column-level documentation made the data self-explanatory, reducing dependency on tribal knowledge and enabling faster onboarding for analysts.
+
+Version Control & Transparency
+Changes to business logic were tracked, reviewable, and auditable — a critical requirement in regulated industries such as pharmaceuticals.
+
+Deliverables and Business Value
+Key Deliverables
+
+Store Performance Mart
+
+Enabled comparison of stores across regions and time.
+
+Supported monthly performance tracking and regional benchmarking.
+
+Product Performance Mart
+
+Identified top-performing products by revenue and profitability.
+
+Enabled analysis of product mix and margin drivers.
+
+Promotional Effectiveness Mart
+
+Quantified the true impact of promotions on volume, revenue, and margin.
+
+Enabled comparison between promotional and non-promotional performance.
+
+Pricing Strategy Mart
+
+Assessed pricing discipline using list price vs realized selling price.
+
+Separated pricing issues from cost-driven margin erosion.
+
+Benefits to the Organization
+
+Clear Decision Support
+Managers can confidently answer what is happening, where, and why — without relying on ad-hoc analysis.
+
+Separation of Concerns
+By using dimensional models instead of a monolithic fact table, each business question is answered without unnecessary complexity.
+
+Flexibility for Analytics Teams
+Analysts can build dashboards, derive KPIs, and explore trends without rewriting logic or risking incorrect aggregations.
+
+Scalability
+New use cases (e.g., supplier analytics, inventory optimization) can be added by building on existing models rather than starting from scratch.
+
+Dimensional Modeling vs Monolithic Modeling
+
+A key design decision in this project was to adopt dimensional modeling rather than a single, wide, monolithic table.
+
+Why Dimensional Modeling Matters
+
+Reduces cognitive load for analysts and business users
+
+Prevents many-to-many relationship issues in BI tools
+
+Encourages clear ownership of metrics
+
+Aligns naturally with how business stakeholders think (products, stores, time, regions)
+
+This approach ensures that analytics remain accurate, explainable, and extensible as the organization grows.
+
+Conclusion and Recommendations
+
+This project illustrates how dbt can be used not just as a transformation tool, but as a foundation for modern analytics engineering. By combining dbt with sound dimensional modeling principles, the organization gains a robust analytics layer that supports both operational reporting and strategic decision-making.
+
+Recommendations
+
+Continue expanding analytics marts incrementally as new business questions arise.
+
+Treat dbt models as shared assets across analytics, finance, and operations teams.
+
+Invest in BI semantic layers to standardize KPI definitions on top of these marts.
+
+Leverage dbt documentation to promote data literacy across non-technical stakeholders.
+
+In summary, this project demonstrates how thoughtful data modeling, supported by dbt, can transform raw data into a strategic advantage — enabling faster insights, better decisions, and scalable analytics growth.
