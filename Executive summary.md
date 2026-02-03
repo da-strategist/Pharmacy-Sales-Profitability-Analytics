@@ -1,304 +1,149 @@
-# Executive Business Case: Retail Pharmacy Analytics
 
-## 1. Business Context
 
-The organization operates a multi-region pharmaceutical retail chain with diverse store formats (urban, suburban, rural) and a broad product portfolio spanning OTC and branded/generic medicines. While sales data exists across stores, products, and time, leadership currently lacks clear, actionable visibility into what truly drives profitability and where value is being lost.
+## Executive Summary
 
-This business case defines the problems to be solved, objectives, and metrics/KPIs required to enable data-driven executive decisions using the existing data model.
+Retail Pharmacy Analytics using dbt
+1. Business Context
+The organization operates a multi-region retail pharmacy network with a diverse store footprint (urban, suburban, rural) and a broad pharmaceutical product portfolio spanning OTC, generic, and branded medicines. While transactional sales data exists across stores, products, and time, decision-makers currently lack clear, trusted, and decision-ready insights into what truly drives profitability.
+Most reporting today is revenue-centric and monolithic in nature, making it difficult to answer critical questions such as:
+* Which stores genuinely create value versus simply generate volume?
+* Which products grow revenue but silently erode margin?
+* Do promotions and pricing decisions improve profitability or merely shift volume?
+This project addresses these gaps by transforming raw sales data into well-defined, analytics-ready data marts, using dbt to enable transparent, scalable, and business-aligned decision-making.
 
----
-
-## 2. Problem Statements
-
-### Problem 1: Store Performance and Profitability
-
-Revenue performance varies significantly across pharmacies, but revenue alone does not explain true performance. Some stores generate strong sales but weak margins, while others quietly outperform.
-
-**Business Risk:**
-
+2. Core Business Problems Addressed
+Problem 1: Store Performance & Profitability Blind Spots
+Revenue performance varies significantly across pharmacies, but revenue alone does not reflect true performance. Stores with similar size, location, and product mix often deliver very different profit outcomes.
+Business Risk
 * Underperforming stores are not identified early
-* Best practices from high-performing stores are not replicated
-* Capital and operational attention may be misallocated
+* High-performing stores are not used as benchmarks
+* Capital, staffing, and operational focus may be misallocated
+Objective
+* Enable monthly, like-for-like comparison of store profitability
+* Identify best-in-class and underperforming stores across regions
 
----
-## Monthly store performance
-Objectives:
-Identify overall monthly transaction volume
-Top performing stores
-Top performing regions
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-### Problem 2: Product Performance
-
-A SKU (Stock Keeping Unit) refers to a single, unique sellable product variant. In this analysis, each `ProductID` represents one SKU (for example: a specific brand, dosage, and pack size of a medicine).
-The product assortment contains high-volume SKUs that may be eroding profitability due to low margins, pricing pressure, or heavy promotion usage.
-
-Business Risk:
-
+Problem 2: Product Performance & Margin Leakage
+A SKU (Stock Keeping Unit) represents a single sellable product variant (brand, dosage, pack size). While some products drive high sales volumes, they may do so at very low or eroding margins due to pricing pressure, cost structure, or heavy promotional reliance.
+Business Risk
 * Margin dilution from fast-moving but low-profit products
 * Inefficient use of shelf space
-* Poor pricing and assortment decisions
+* Poor assortment and pricing decisions
+Objective
+* Distinguish revenue-driving products from profit-driving products
+* Detect “silent margin killers” early
+* Support evidence-based assortment optimization
 
-Tasks
-Identify
+Problem 3: Promotion Effectiveness & ROI Uncertainty
+Promotions are widely used to stimulate demand, yet their true impact on profitability remains unclear. Increased volume does not automatically translate into increased value.
+Business Risk
+* Promotions that boost volume but destroy margin
+* Inconsistent promotional strategies across regions
+* Lack of accountability for promotional ROI
+Objective
+* Quantify the incremental impact of promotions on units, revenue, and margin
+* Separate value-creating promotions from volume-only or loss-making ones
 
-Top products by revenue and margin
-→ avoids the classic “high revenue, low profitability” trap
+Problem 4: Pricing Effectiveness & Realized Price Control
+List prices and standard costs exist, but realized selling prices vary due to promotions and regional effects. Without structured pricing analytics, leadership cannot assess pricing discipline or margin sustainability.
+Business Risk
+* Excessive discounting without visibility
+* Weak control over realized margins
+* Inability to benchmark pricing performance across regions
+Objective
+* Track realized pricing performance at product and regional level
+* Measure discount depth, margin erosion, and pricing discipline over time
 
-Promo impact
-→ critical for decision-making (discount ≠ success)
-
-Regional performance
-→ supports localized assortment and pricing strategies
-
-
-
-### Problem 3: Promotion Effectiveness 
-
-Promotions are widely used to drive sales volume, but their true impact on profitability is unclear.
-
-Business Risk:
-
-* Promotions that increase volume but destroy margin
-* Inconsistent promotional strategy across regions
-* Lack of evidence-based promo governance
-
-mart desc: This model exists to help decision-makers understand whether promotions drive incremental volume and revenue, and whether the margin trade-off is justified.
----
-
-### Problem 3: Pricing effectiveness Effectiveness 
-
-## 3. Business Objectives
-
-### Strategic Objectives
-
-* Improve overall profitability, not just revenue growth
-* Enable evidence-based decisions at executive and regional levels
-* Create transparency across stores, products, and promotions
-
-### Operational Objectives
-
+3. Business Objectives
+Strategic Objectives
+* Shift decision-making from revenue-focused to profit-focused
+* Enable consistent, evidence-based decisions at executive and regional levels
+* Create transparency across stores, products, promotions, and pricing
+Operational Objectives
 * Identify underperforming and best-in-class stores
 * Optimize product mix toward high-margin contributors
-* Rationalize promotions based on ROI
+* Rationalize promotions based on measurable ROI
+* Improve pricing discipline and margin sustainability
 
----
-Pricing effectiveness and performance mart
-This model was created to uncover insights on the monthly realized pricing performance of individual products within a specific region, based on actual sales transactions.
-
-## 4. Key Metrics & KPIs
-
-### 4.1 Financial Performance KPIs
-
-**Core Metrics**
-
+4. Key Metrics & KPIs
+Financial Performance (Foundation)
 * Total Revenue (€)
 * Total Cost (€)
 * Total Margin (€)
-* Margin % (Margin / Revenue)
+* Margin %
+Purpose:Provide a consistent profitability baseline across all analytics marts.
 
-**Usage:**
-
-* Compare performance across stores, regions, and products
-* Track profitability trends over time
-
----
-
-### 4.2 Store Performance KPIs
-
+Store Performance KPIs
 * Revenue per Store
 * Margin per Store
-* Margin % per Store
-* Revenue and Margin by:
+* Margin %
+* Performance by:
+    * Region
+    * Store Size Band
+    * Urban / Suburban / Rural classification
+Executive Questions Answered
+* Which stores underperform on profit?
+* Which stores should be used as benchmarks?
 
-  * Store Size Band (S/M/L)
-  * Pharmacy Type (Urban/Suburban/Rural)
-* Like-for-like performance (mature vs new stores)
-
-**Executive Questions Answered:**
-
-* Which stores are underperforming on profit?
-* Which stores should be benchmarks?
-
----
-
-### 4.3 Product & Portfolio KPIs
-
+Product & Portfolio KPIs
 * Revenue by Product / Brand / Category
 * Margin € and Margin % by Product
-* Sales Volume vs Margin Contribution
+* Units Sold vs Margin Contribution
 * Generic vs Branded:
-
-  * Revenue share
-  * Margin share
-
-**Executive Questions Answered:**
-
-* Which products drive profit vs volume?
+    * Revenue Share
+    * Margin Share
+Executive Questions Answered
+* Which products truly drive profit?
 * Where is margin leakage occurring?
 
----
-
-### 4.4 Promotion Effectiveness KPIs
-
+Promotion Effectiveness KPIs
+* Promo vs Non-Promo Units Sold
 * Promo vs Non-Promo Revenue
 * Promo vs Non-Promo Margin
-* Units Sold (Promo vs Non-Promo)
-* Margin Delta (Promo impact on profitability)
-* Promo Dependency Ratio (% of sales under promo)
+* Margin Delta (Promo vs Non-Promo)
+* Promo Dependency Ratio
+Executive Questions Answered
+* Do promotions create value or destroy it?
+* Which promotions should be scaled, redesigned, or stopped?
 
-**Executive Questions Answered:**
+Pricing Strategy KPIs
+* Average Selling Price (ASP)
+* Average Cost Price (ACP)
+* Unit Margin
+* Discount vs List Price (Absolute & %)
+* Margin % vs List Price
+Executive Questions Answered
+* Are we discounting responsibly?
+* How does realized pricing impact profitability across regions?
 
-* Do promotions create or destroy value?
-* Which promos should be scaled or stopped?
+5. Analytics Approach & Deliverables
+Using dbt, the project delivers modular, dimensional analytics marts covering:
+* Store Performance
+* Product Performance
+* Promotion Effectiveness
+* Pricing Strategy
+This approach replaces a monolithic reporting structure with flexible, reusable, and testable models, enabling faster insights, stronger governance, and seamless BI consumption. 
 
----
+Conclusion
 
+This project demonstrates how a well-structured analytics foundation, built with dbt and dimensional modeling principles, can transform raw retail pharmacy data into clear, trusted, and decision-ready insights.
 
+By moving away from a monolithic reporting structure toward purpose-built marts for store performance, product profitability, promotion effectiveness, and pricing strategy, the organization gains a unified and consistent view of profitability across regions, products, and time. Revenue is no longer treated as a proxy for success; instead, margin, efficiency, and sustainability become the true measures of performance.
 
----
+Most importantly, this analytics layer does not merely describe what has happened — it enables leadership to understand why performance differs, where value is being created or lost, and which levers (pricing, promotions, assortment, store strategy) should be adjusted. The result is a scalable decision framework that supports both executive strategy and operational execution.
 
-## 6. Constraints & Assumptions
+Recommendation
 
-* Analysis is based solely on existing tables:
+Profitability must replace revenue as the primary success metric
+Margin-based KPIs expose hidden underperformance and prevent capital from being allocated to low-quality growth.
 
-  * DimDate
-  * DimPharmacy
-  * DimProduct
-  * FactSales
-* No customer, inventory, or staffing data assumed
-* Focus is on **actionable insights**, not descriptive reporting
+Product mix is a major driver of margin leakage
+High-volume products can quietly erode profit, while high-margin products represent underutilized growth opportunities.
 
----
+Not all promotions create value
+Promotions must be governed by ROI and margin impact, not volume uplift, to avoid systematic profit erosion.
 
-*Prepared from the perspective of the Executive Director to guide a real-world analytics engagement.*
+Pricing discipline directly impacts profitability
+Monitoring realized prices versus list prices enables tighter control of discounting and regional price inconsistencies.
 
-
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-Objectives 
-
-1. Revenue & Margin Control
-
-    Track revenue, cost, and margin by:
-
-        Store, city, region, country
-
-        Product, brand, category (OTC vs Rx), generic vs branded
-
-        Time (day → month → quarter → year)
-
-    Identify:
-
-        Low-margin products that sell a lot (silent profit killers)
-        High-margin, low-volume products (growth opportunities)
-        Store performance across regions
-
-2. Store & Regional Performance
-
-    Rank pharmacies by:
-
-        Revenue, margin, margin %
-
-        Units sold per store size band
-
-    Compare:
-
-        Urban vs suburban vs rural performance
-
-        New vs mature stores (using OpenDate)
-
-        Product Portfolio Decisions
-
-    See:
-
-        Which brands and categories actually drive profit
-
-        Whether generics outperform branded products on margin
-
-    Flag:
-
-        Products selling close to or below cost
-
-        Discontinued products still appearing in sales (compliance red flag)
-
-        Promo Effectiveness (High Interest)
-
-    Compare promo vs non-promo:
-
-        Units uplift
-
-        Margin erosion
-
-        Net profit impact
-
-        “Are promotions increasing profit or just volume?”
-
-2. What I immediately want YOU to analyze first (priority order)
-
-
-2.1: Store Profitability & Variance
-
-Question I care about:
-
-“Why do two similar stores perform very differently?”
-
-
-        Revenue, margin, and margin % by store
-
-Normalized by:
-
-Store size band
-
-Urban/rural classification
-
-Outlier detection:
-
-Underperforming stores
-
-Best-in-class stores we should learn from
-
-🔥 Priority 2: Product Margin Leakage
-
-Question:
-
-“Where are we bleeding margin without noticing?”
-
-I expect:
-
-Products with:
-
-High sales volume but low or negative margin
-
-Heavy promo dependency
-
-Generic vs branded margin comparison
-
-Category-level margin contribution
-
-🔥 Priority 3: Promotion ROI
-
-Question:
-
-“Which promos should we stop immediately?”
-
-I want:
-
-Promo vs non-promo:
-
-Units sold
-
-Revenue
-
-Margin €
-
-Clear verdict:
-
-Value-creating promos
-
-Volume-only promos
-
-Loss-making promos
-
-
+A modular dbt-powered data mart enables scalable decision-making
+Trusted, tested models allow leadership to move from reactive reporting to proactive, insight-led management.
