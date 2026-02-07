@@ -16,6 +16,7 @@ FROM {{ref('stg_dimdate')}}
 
     SELECT 
         to_varchar(start_of_txn_month, 'yyyy-mm') as month_key,
+        txn_date,
         start_of_txn_month,
         txn_year,
         month_num,
